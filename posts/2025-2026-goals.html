@@ -295,6 +295,89 @@
   </div>
 </div>
 <!-- End Goal 1 Update -->
+    <!-- Goal 2 Update — paste into blog post after Goal 1 section -->
+<style>
+  .g2-wrap { padding: 1.5rem 0 1rem; font-family: 'Georgia', serif; }
+  .g2-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1.5rem; }
+  .g2-badge { background: #d4edda; color: #1a6b35; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 3px 10px; border-radius: 99px; white-space: nowrap; margin-top: 4px; font-family: sans-serif; }
+  .g2-title { font-size: 1.2rem; font-weight: 700; color: #2d5a4e; margin: 0 0 4px; }
+  .g2-sub { font-size: 0.88rem; color: #556; margin: 0; font-style: italic; }
+  .g2-stats { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1.4rem; }
+  .g2-stat { display: flex; align-items: center; gap: 10px; background: #eef5f3; border: 1px solid #c8ddd8; border-radius: 8px; padding: 8px 16px; }
+  .g2-stat-num { font-size: 1.6rem; font-weight: 700; color: #2d5a4e; }
+  .g2-stat-label { font-size: 0.78rem; color: #4a6860; line-height: 1.35; font-family: sans-serif; }
+  .g2-section { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; color: #4a7c6f; text-transform: uppercase; margin: 1.4rem 0 0.7rem; font-family: sans-serif; border-bottom: 1.5px solid #c8ddd8; padding-bottom: 4px; }
+  .g2-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; margin-bottom: 4px; }
+  .g2-card { background: #fff; border: 1px solid #dde8e5; border-radius: 8px; padding: 0.9rem 1.1rem; }
+  .g2-card-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; color: #4a7c6f; text-transform: uppercase; margin: 0 0 6px; font-family: sans-serif; }
+  .g2-card-content { font-size: 0.88rem; color: #2a2a2a; line-height: 1.6; margin: 0; }
+  .g2-card-content ul { margin: 6px 0 0 0; padding-left: 1.2rem; }
+  .g2-card-content li { margin-bottom: 3px; }
+  .g2-card-link { display: inline-block; margin-top: 0.65rem; font-family: sans-serif; font-size: 0.78rem; font-weight: 700; color: #2d5a4e; text-decoration: none; border: 1px solid #4a7c6f; border-radius: 4px; padding: 0.25rem 0.65rem; letter-spacing: 0.03em; transition: background 0.15s, color 0.15s; }
+  .g2-card-link:hover { background: #2d5a4e; color: #fff; }
+  .g2-commentary { margin-top: 2rem; font-size: 1rem; line-height: 1.85; color: #2a2a2a; }
+  .g2-commentary p { margin: 0 0 1.2em; }
+</style>
+
+<div class="g2-wrap">
+  <div class="g2-header">
+    <div>
+      <p class="g2-title">Self-directed goal: microcontrollers</p>
+      <p class="g2-sub">Develop enough skill with Arduino microcontrollers and coding to produce one or more "smart" products.</p>
+    </div>
+    <span class="g2-badge">Goal met</span>
+  </div>
+
+  <div class="g2-stats">
+    <div class="g2-stat">
+      <span class="g2-stat-num">2+</span>
+      <span class="g2-stat-label">proof-of-concept<br>devices produced</span>
+    </div>
+    <div class="g2-stat">
+      <span class="g2-stat-num">1</span>
+      <span class="g2-stat-label">student-facing<br>web tool deployed</span>
+    </div>
+    <div class="g2-stat">
+      <span class="g2-stat-num">1</span>
+      <span class="g2-stat-label">class period to first<br>working macropad</span>
+    </div>
+  </div>
+
+  <p class="g2-section">Proof-of-concept devices</p>
+  <div class="g2-grid">
+    <div class="g2-card">
+      <p class="g2-card-label">Classroom noise monitor</p>
+      <p class="g2-card-content">A real-time noise-level meter with a companion website that tracked how many times the "too loud" threshold was sustained for 3+ seconds. Used with younger students as a visual and numeric reminder — with measurable results in classroom volume.</p>
+    </div>
+    <div class="g2-card">
+      <p class="g2-card-label">Programmable macropad</p>
+      <p class="g2-card-content">A multifunction USB macropad built on an ESP32, with configurable buttons and inputs. Served as the direct inspiration for the student-facing configurator tool below.</p>
+    </div>
+  </div>
+
+  <p class="g2-section">Student tool</p>
+  <div class="g2-grid">
+    <div class="g2-card" style="grid-column: 1 / -1;">
+      <p class="g2-card-label">Macropad configurator</p>
+      <p class="g2-card-content">An all-in-one quick-start web tool for introducing students to ESP32 microcontrollers. Students drag and drop input components onto a microcontroller diagram, wiring auto-populates, and each component's function is user-defined. On export, the tool generates:
+        <ul>
+          <li>A ready-to-use configuration file for the device</li>
+          <li>A wiring diagram</li>
+          <li>Step-by-step setup instructions</li>
+        </ul>
+        Coding and programming are handled entirely by the tool — the only remaining task is connecting wires to the correct terminals. In practice, DP students went from zero microcontroller experience to a working macropad in a single class period.
+      </p>
+      <a class="g2-card-link" href="https://edu.contrapaul.com/tools/macropad/" target="_blank">Try the macropad configurator →</a>
+    </div>
+  </div>
+</div>
+
+<div class="g2-commentary">
+  <p>There have been a few "aha!" moments with microcontrollers, but the single biggest one was the revelation that I could work on projects and produce code with the help of AI. At the start this meant some things were flawless, but I spent a fair bit of time pasting error messages back to DeepSeek trying to troubleshoot things. As I've learned more of the coding languages myself I've needed to lean on AI less for simple troubleshooting, and pivoted to using it to create web interfaces and tools such as the macropad configurator.</p>
+  <p>My AI-assisted journey into microcontrollers has become an ongoing adventure over the past five months. ESP32 devices have Bluetooth and Wi-Fi, and can be used for all manner of home automation and Internet of Things projects. Exploring home automation led me to the idea that old hardware can be repurposed as a home server — for things like network-attached storage (my own OneDrive), locally hosted replacements for media streaming services, and even locally run LLMs. As someone who likes building computers, designing things, and learning about technology, creating my own small "datacenter" was too exciting a prospect to pass up. At present I have a cluster of three computers at home running different services on Proxmox, and I've learned a great deal about networking, servers, Linux, programming, and AI in the process.</p>
+  <p>I have a few things left to complete on that project, one of which is ESPHome — a hub for connecting and monitoring ESP32-powered devices. The project I'm most excited to begin involves using ESP32 cameras and local machine learning to build a cat identification device for my house. I might use it to dispense treats, or to collect data on where each cat spends their day — but more importantly, I now know where to begin and have the tools needed to see it through.</p>
+</div>
+<!-- End Goal 2 Update -->
 </article>
 
 <footer class="site-footer">
