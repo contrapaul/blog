@@ -21,10 +21,7 @@
 </header>
 
 <style>
-  /* ── Accordion base ── */
-  .iste-wrap {
-    margin: 2.5rem 0;
-  }
+  .iste-wrap { margin: 2.5rem 0; }
 
   .iste-section {
     border: 1px solid var(--border, #dde8e5);
@@ -34,7 +31,7 @@
     scroll-margin-top: 80px;
   }
 
-  /* Section toggle (top-level: 2.1 Learner etc.) */
+  /* Top-level toggle only */
   .iste-section-toggle {
     display: flex;
     align-items: center;
@@ -49,10 +46,7 @@
     font-family: 'Georgia', serif;
     gap: 1rem;
   }
-
-  .iste-section-toggle:hover {
-    background: #255047;
-  }
+  .iste-section-toggle:hover { background: #255047; }
 
   .iste-section-title {
     font-size: 1rem;
@@ -61,7 +55,6 @@
     margin: 0;
     line-height: 1.3;
   }
-
   .iste-section-label {
     font-family: sans-serif;
     font-size: 0.7rem;
@@ -71,7 +64,6 @@
     opacity: 0.7;
     white-space: nowrap;
   }
-
   .iste-section-desc {
     font-size: 0.82rem;
     opacity: 0.8;
@@ -80,7 +72,6 @@
     font-weight: 400;
     line-height: 1.45;
   }
-
   .iste-chevron {
     flex-shrink: 0;
     width: 20px;
@@ -88,6 +79,7 @@
     transition: transform 0.25s ease;
     opacity: 0.8;
   }
+  .iste-section-toggle.open .iste-chevron { transform: rotate(180deg); }
 
   /* Section body */
   .iste-section-body {
@@ -95,40 +87,20 @@
     background: #f7fbfa;
     border-top: 1px solid #dde8e5;
   }
+  .iste-section-body.open { display: block; }
 
-  .iste-section-body.open {
-    display: block;
-  }
+  /* Sub-section — static, always visible */
+  .iste-sub { border-bottom: 1px solid #dde8e5; }
+  .iste-sub:last-child { border-bottom: none; }
 
-  /* Subsection toggle */
-  .iste-sub {
-    border-bottom: 1px solid #dde8e5;
-  }
-
-  .iste-sub:last-child {
-    border-bottom: none;
-  }
-
-  .iste-sub-toggle {
+  .iste-sub-header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    background: none;
-    border: none;
-    padding: 0.85rem 1.25rem;
-    cursor: pointer;
-    text-align: left;
-    font-family: sans-serif;
-    gap: 1rem;
-    transition: background 0.15s;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 1rem 1.25rem 0.2rem;
   }
-
-  .iste-sub-toggle:hover {
-    background: #eef5f3;
-  }
-
   .iste-sub-code {
+    font-family: sans-serif;
     font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -137,80 +109,41 @@
     white-space: nowrap;
     flex-shrink: 0;
   }
-
-  .iste-sub-title-wrap {
-    flex: 1;
-  }
-
   .iste-sub-title {
-    font-size: 0.88rem;
-    font-weight: 600;
+    font-family: sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
     color: #2a2a2a;
-    margin: 0 0 1px;
+    margin: 0;
     line-height: 1.3;
   }
-
   .iste-sub-official {
+    font-family: sans-serif;
     font-size: 0.75rem;
-    color: #888;
+    color: #999;
     font-style: italic;
     margin: 0;
-    line-height: 1.35;
+    padding: 0.15rem 1.25rem 0.6rem 1.25rem;
+    line-height: 1.4;
   }
-
-  .iste-sub-chevron {
-    flex-shrink: 0;
-    width: 16px;
-    height: 16px;
-    color: #4a7c6f;
-    transition: transform 0.2s ease;
-  }
-
-  /* Subsection content */
   .iste-sub-body {
-    display: none;
-    padding: 1rem 1.25rem 1.25rem 1.25rem;
-    background: #fff;
-    border-top: 1px solid #eef5f3;
+    padding: 0 1.25rem 1.1rem;
     font-family: 'Georgia', serif;
     font-size: 0.92rem;
     line-height: 1.8;
     color: #2a2a2a;
   }
-
-  .iste-sub-body.open {
-    display: block;
-  }
-
-  .iste-sub-body p {
-    margin: 0 0 0.9em;
-  }
-
-  .iste-sub-body p:last-child {
-    margin-bottom: 0;
-  }
-
+  .iste-sub-body p { margin: 0 0 0.9em; }
+  .iste-sub-body p:last-child { margin-bottom: 0; }
   .iste-sub-body a {
     color: #2d5a4e;
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-thickness: 1px;
   }
+  .iste-sub-body a:hover { color: #4a7c6f; }
 
-  .iste-sub-body a:hover {
-    color: #4a7c6f;
-  }
-
-  /* Open state chevron rotation */
-  .iste-section-toggle.open .iste-chevron {
-    transform: rotate(180deg);
-  }
-
-  .iste-sub-toggle.open .iste-sub-chevron {
-    transform: rotate(180deg);
-  }
-
-  /* Intro blurb */
+  /* Intro */
   .iste-intro {
     font-family: 'Georgia', serif;
     font-size: 1rem;
@@ -218,10 +151,7 @@
     color: #2a2a2a;
     margin-bottom: 2rem;
   }
-
-  .iste-intro p {
-    margin: 0 0 1em;
-  }
+  .iste-intro p { margin: 0 0 1em; }
 </style>
 </head>
 <body>
@@ -238,7 +168,7 @@
     <p class="post-subtitle">An annual reflection on how my practice aligns with the ISTE Standards for Educators.</p>
 
     <div class="iste-intro">
-      <p>Each section below maps to one of the seven ISTE Educator Standards. Click a standard to expand it, then click any sub-standard to read my reflection. Last year's post followed the same structure — this year there's considerably more to point to.</p>
+      <p>Each section below maps to one of the seven ISTE Educator Standards. Click a standard to expand it and read my reflections on each sub-standard. Last year's post followed the same structure — this year there's considerably more to point to.</p>
     </div>
 
     <div class="iste-wrap">
@@ -258,45 +188,21 @@
         <div class="iste-section-body">
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.1a</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Set Professional Goals</p>
-                <p class="iste-sub-official">Sets clear, actionable professional learning goals that leverage technology effectively.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>My formal goals for 2025–26 are documented and linked in my goals post, but goal-setting for me doesn't stop at the official portfolio program. I maintain my own projects and pursuits outside that structure, and technology is essentially ubiquitous across all of them. This year that's included revisiting and substantially revising an LED lighting project — a modular LED system that has since been downloaded by thousands of people — as well as diving deep into building and running a home server, learning everything that entails from the ground up.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.1a</span><p class="iste-sub-title">Set Professional Goals</p></div>
+            <p class="iste-sub-official">Sets clear, actionable professional learning goals that leverage technology effectively.</p>
+            <div class="iste-sub-body"><p>My formal goals for 2025–26 are documented and linked in my goals post, but goal-setting for me doesn't stop at the official portfolio program. I maintain my own projects and pursuits outside that structure, and technology is essentially ubiquitous across all of them. This year that's included revisiting and substantially revising an LED lighting project — a modular LED system that has since been downloaded by thousands of people — as well as diving deep into building and running a home server, learning everything that entails from the ground up.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.1b</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Participate in PLNs</p>
-                <p class="iste-sub-official">Actively engages and contributes to various professional learning networks.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>As noted in last year's post, I'm an active member of a WeChat group connecting Design teachers and industrial designers. This year I presented again at the EdTech GZ conference, and in the previous year exhibited my work at Maker Faire Shenzhen. Staying current with technology and connected to the people pushing it forward is something I do naturally — these networks are part of how that happens.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.1b</span><p class="iste-sub-title">Participate in PLNs</p></div>
+            <p class="iste-sub-official">Actively engages and contributes to various professional learning networks.</p>
+            <div class="iste-sub-body"><p>As noted in last year's post, I'm an active member of a WeChat group connecting Design teachers and industrial designers. This year I presented again at the EdTech GZ conference, and in the previous year exhibited my work at Maker Faire Shenzhen. Staying current with technology and connected to the people pushing it forward is something I do naturally — these networks are part of how that happens.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.1c</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Keep Current on Research</p>
-                <p class="iste-sub-official">Consistently stays current with research and integrates findings into practice.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>Staying current isn't something I have to remind myself to do — it happens naturally through the projects I pursue. A few concrete examples from this year: I've kept pace with developments in 3D printing technology, followed the rapid evolution of AI closely enough to set up and run local AI models on my own hardware, and built out a home network of devices I'd describe affectionately as my own small data center. The student tools and activities on this site are perhaps the clearest evidence of where that research goes — they reflect an ongoing effort to bring genuinely current technology into the classroom in practical, accessible ways.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.1c</span><p class="iste-sub-title">Keep Current on Research</p></div>
+            <p class="iste-sub-official">Consistently stays current with research and integrates findings into practice.</p>
+            <div class="iste-sub-body"><p>Staying current isn't something I have to remind myself to do — it happens naturally through the projects I pursue. A few concrete examples from this year: I've kept pace with developments in 3D printing technology, followed the rapid evolution of AI closely enough to set up and run local AI models on my own hardware, and built out a home network of devices I'd describe affectionately as my own small data center. The student tools and activities on this site are perhaps the clearest evidence of where that research goes — they reflect an ongoing effort to bring genuinely current technology into the classroom in practical, accessible ways.</p></div>
           </div>
 
         </div>
@@ -317,45 +223,21 @@
         <div class="iste-section-body">
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.2a</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Advance a Shared Vision</p>
-                <p class="iste-sub-official">Actively shapes and advances a shared vision for empowered learning with technology.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>I talk frequently with our head of technology integration, and that's been a genuine two-way conversation rather than a formality. My push into microcontrollers, for example, is something I've shared progress on at nearly every step — the purpose being explicit from the start: to develop something transferable to students and to the school's broader technology goals. Beyond that, I've worked to bring more STEM into Design, Product Design, and the younger years — incorporating engineering and mechanical thinking, including building machines using Lego Technic. Broader, better STEM education is a shared goal at the school, and it's one I'm actively pushing forward.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.2a</span><p class="iste-sub-title">Advance a Shared Vision</p></div>
+            <p class="iste-sub-official">Actively shapes and advances a shared vision for empowered learning with technology.</p>
+            <div class="iste-sub-body"><p>I talk frequently with our head of technology integration, and that's been a genuine two-way conversation rather than a formality. My push into microcontrollers, for example, is something I've shared progress on at nearly every step — the purpose being explicit from the start: to develop something transferable to students and to the school's broader technology goals. Beyond that, I've worked to bring more STEM into Design, Product Design, and the younger years — incorporating engineering and mechanical thinking, including building machines using Lego Technic. Broader, better STEM education is a shared goal at the school, and it's one I'm actively pushing forward.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.2b</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Advocate for Equitable Access</p>
-                <p class="iste-sub-official">Actively advocates for equitable access and supports initiatives to achieve it.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>Every student in middle and high school at our school has a MacBook, which establishes a solid baseline. But equitable access in practice means more than hardware — it means ensuring the tools I direct students to actually work for them at home. I'm intentional about this. The student tools on this site were built and deployed specifically to be accessible without a private network or VPN — no small consideration given where we are. Getting the site set up in a way that loads reliably here took real effort, and that effort was worth it.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.2b</span><p class="iste-sub-title">Advocate for Equitable Access</p></div>
+            <p class="iste-sub-official">Actively advocates for equitable access and supports initiatives to achieve it.</p>
+            <div class="iste-sub-body"><p>Every student in middle and high school at our school has a MacBook, which establishes a solid baseline. But equitable access in practice means more than hardware — it means ensuring the tools I direct students to actually work for them at home. I'm intentional about this. The student tools on this site were built and deployed specifically to be accessible without a private network or VPN — no small consideration given where we are. Getting the site set up in a way that loads reliably here took real effort, and that effort was worth it.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.2c</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Model Digital Tool Use</p>
-                <p class="iste-sub-official">Expertly models the identification and use of various digital resources.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>Modelling digital tool use is a constant in my classroom — whether that's walking students through Fusion 360, Bricklink Studio, or any of the other tools we use for class. I also model how I use AI, which I think is increasingly important. The goal isn't to present AI as something to be suspicious of, but to show what genuinely productive use looks like — using it to advance a project in a way that holds up to scrutiny and upholds academic integrity. If students can see how I use it, they have a better frame for how they might use it well themselves.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.2c</span><p class="iste-sub-title">Model Digital Tool Use</p></div>
+            <p class="iste-sub-official">Expertly models the identification and use of various digital resources.</p>
+            <div class="iste-sub-body"><p>Modelling digital tool use is a constant in my classroom — whether that's walking students through Fusion 360, Bricklink Studio, or any of the other tools we use for class. I also model how I use AI, which I think is increasingly important. The goal isn't to present AI as something to be suspicious of, but to show what genuinely productive use looks like — using it to advance a project in a way that holds up to scrutiny and upholds academic integrity. If students can see how I use it, they have a better frame for how they might use it well themselves.</p></div>
           </div>
 
         </div>
@@ -376,59 +258,27 @@
         <div class="iste-section-body">
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.3a</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Create Positive Experiences</p>
-                <p class="iste-sub-official">Consistently creates inclusive and positive online experiences.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>The tools and activities I've built for students are a direct attempt to create positive, productive online experiences. My Moodle and now this website are both built with the same intent — to give students a wealth of useful resources in one place and reduce the need to venture outside of those spaces to find what they need. The more I can provide within a curated, reliable environment, the better the experience for them.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.3a</span><p class="iste-sub-title">Create Positive Experiences</p></div>
+            <p class="iste-sub-official">Consistently creates inclusive and positive online experiences.</p>
+            <div class="iste-sub-body"><p>The tools and activities I've built for students are a direct attempt to create positive, productive online experiences. My Moodle and now this website are both built with the same intent — to give students a wealth of useful resources in one place and reduce the need to venture outside of those spaces to find what they need. The more I can provide within a curated, reliable environment, the better the experience for them.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.3b</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Evaluate Resources for Credibility</p>
-                <p class="iste-sub-official">Effectively fosters digital literacy through critical evaluation of resources.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>This comes up regularly in DP Design Technology in particular. When we review videos or outside resources, we talk about who made them, what their perspective might be, and where potential bias could come from. Credibility isn't assumed — it's something we actively discuss.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.3b</span><p class="iste-sub-title">Evaluate Resources for Credibility</p></div>
+            <p class="iste-sub-official">Effectively fosters digital literacy through critical evaluation of resources.</p>
+            <div class="iste-sub-body"><p>This comes up regularly in DP Design Technology in particular. When we review videos or outside resources, we talk about who made them, what their perspective might be, and where potential bias could come from. Credibility isn't assumed — it's something we actively discuss.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.3c</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Model Safe, Legal, Ethical Practices</p>
-                <p class="iste-sub-official">Consistently mentors students on safe, legal, and ethical practices.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>This isn't always an explicit, spoken-aloud lesson — but it's consistent. Whether it's how I approach AI use, how I cite sources, or what I communicate as expected practice, the modelling is there. Students see what careful, ethical use of technology looks like in practice, and that's often more effective than a direct instruction.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.3c</span><p class="iste-sub-title">Model Safe, Legal, Ethical Practices</p></div>
+            <p class="iste-sub-official">Consistently mentors students on safe, legal, and ethical practices.</p>
+            <div class="iste-sub-body"><p>This isn't always an explicit, spoken-aloud lesson — but it's consistent. Whether it's how I approach AI use, how I cite sources, or what I communicate as expected practice, the modelling is there. Students see what careful, ethical use of technology looks like in practice, and that's often more effective than a direct instruction.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.3d</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Manage, Protect Data</p>
-                <p class="iste-sub-official">Actively models effective data management and protection.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>This hasn't required detailed attention yet, but it's on the horizon. As my DP students move into more involved survey work — both for their IA projects and for general design practice — intentional discussions around user data protection will become a natural and necessary part of that process. The groundwork is being laid.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.3d</span><p class="iste-sub-title">Manage, Protect Data</p></div>
+            <p class="iste-sub-official">Actively models effective data management and protection.</p>
+            <div class="iste-sub-body"><p>This hasn't required detailed attention yet, but it's on the horizon. As my DP students move into more involved survey work — both for their IA projects and for general design practice — intentional discussions around user data protection will become a natural and necessary part of that process. The groundwork is being laid.</p></div>
           </div>
 
         </div>
@@ -449,59 +299,27 @@
         <div class="iste-section-body">
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.4a</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Collaborate with Colleagues</p>
-                <p class="iste-sub-official">Actively collaborates to create authentic learning experiences.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>Collaboration with colleagues has taken several forms this year. Within the department I've worked actively with Francois and Brett on curriculum improvement, and reached out to the DP Sciences team to understand their practices and find ways to strengthen my own. As a member of the DEIJ committee I've presented twice this year on promoting diversity and equity in the classroom, and have taken ideas from other teachers back into my own practice in the same spirit. Arts Week and various school events have brought further opportunities to work across departments — collaboration here is ongoing and varied rather than confined to any one context.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.4a</span><p class="iste-sub-title">Collaborate with Colleagues</p></div>
+            <p class="iste-sub-official">Actively collaborates to create authentic learning experiences.</p>
+            <div class="iste-sub-body"><p>Collaboration with colleagues has taken several forms this year. Within the department I've worked actively with Francois and Brett on curriculum improvement, and reached out to the DP Sciences team to understand their practices and find ways to strengthen my own. As a member of the DEIJ committee I've presented twice this year on promoting diversity and equity in the classroom, and have taken ideas from other teachers back into my own practice in the same spirit. Arts Week and various school events have brought further opportunities to work across departments — collaboration here is ongoing and varied rather than confined to any one context.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.4b</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Learn Alongside Students</p>
-                <p class="iste-sub-official">Regularly collaborates and co-learns with students.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>I model this as often as I can. I'll demonstrate programs and provide answers where I have them, but I'm not at all unsettled by not knowing something — and I don't pretend otherwise. When a student asks something I can't immediately answer, I work through the process of finding one with them and make a point of naming what I've just learned. My favourite version of this is when a student teaches me something new. That happens, I celebrate it, and I think it sends a message worth sending.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.4b</span><p class="iste-sub-title">Learn Alongside Students</p></div>
+            <p class="iste-sub-official">Regularly collaborates and co-learns with students.</p>
+            <div class="iste-sub-body"><p>I model this as often as I can. I'll demonstrate programs and provide answers where I have them, but I'm not at all unsettled by not knowing something — and I don't pretend otherwise. When a student asks something I can't immediately answer, I work through the process of finding one with them and make a point of naming what I've just learned. My favourite version of this is when a student teaches me something new. That happens, I celebrate it, and I think it sends a message worth sending.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.4c</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Use Collaborative Tools</p>
-                <p class="iste-sub-official">Effectively uses a variety of collaborative tools to enhance learning.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>The clearest example this year is Moodle, used with forums to have students post work, share ideas, and discuss elements of their projects and learning. Beyond that, Bricklink Studio — used in grade six for Lego set design — has a Build Together mode that allows multiple students to work on the same project simultaneously, enabling genuine real-time collaborative building.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.4c</span><p class="iste-sub-title">Use Collaborative Tools</p></div>
+            <p class="iste-sub-official">Effectively uses a variety of collaborative tools to enhance learning.</p>
+            <div class="iste-sub-body"><p>The clearest example this year is Moodle, used with forums to have students post work, share ideas, and discuss elements of their projects and learning. Beyond that, Bricklink Studio — used in grade six for Lego set design — has a Build Together mode that allows multiple students to work on the same project simultaneously, enabling genuine real-time collaborative building.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.4d</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Demonstrate Cultural Competency</p>
-                <p class="iste-sub-official">Consistently interacts with cultural competency and inclusivity.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>As a member of the DEIJ committee I've spent considerable time this year focused on diversity, equity, and inclusion — both in terms of what I've presented and what I've taken back into my own classroom from others. Living and working in China as a foreigner makes a baseline level of cultural competency a daily necessity rather than an aspiration. I've gone further than that by taking Mandarin lessons outside of school, developing enough language to better understand what students around me might be saying. Where situations arise that carry the potential for cultural misunderstanding, I try to approach them with care and intentionality.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.4d</span><p class="iste-sub-title">Demonstrate Cultural Competency</p></div>
+            <p class="iste-sub-official">Consistently interacts with cultural competency and inclusivity.</p>
+            <div class="iste-sub-body"><p>As a member of the DEIJ committee I've spent considerable time this year focused on diversity, equity, and inclusion — both in terms of what I've presented and what I've taken back into my own classroom from others. Living and working in China as a foreigner makes a baseline level of cultural competency a daily necessity rather than an aspiration. I've gone further than that by taking Mandarin lessons outside of school, developing enough language to better understand what students around me might be saying. Where situations arise that carry the potential for cultural misunderstanding, I try to approach them with care and intentionality.</p></div>
           </div>
 
         </div>
@@ -522,45 +340,21 @@
         <div class="iste-section-body">
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.5a</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Accommodate Learner Differences</p>
-                <p class="iste-sub-official">Effectively personalizes learning experiences for diverse learners.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>For younger grades I translate task instructions and success criteria into students' native languages, so that what they need to do — and what success looks like — is accessible regardless of English proficiency. The same applies to vocabulary lists and challenging concepts, where I do my best to provide models so that no student is left guessing. Assessment design follows the same principle: I work hard to build tasks that don't penalise students for language skills, while also setting a high enough skill ceiling that strong students aren't held back by an assignment that's already been maxed out. The goal is for every student to have a genuine opportunity to do their best work.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.5a</span><p class="iste-sub-title">Accommodate Learner Differences</p></div>
+            <p class="iste-sub-official">Effectively personalizes learning experiences for diverse learners.</p>
+            <div class="iste-sub-body"><p>For younger grades I translate task instructions and success criteria into students' native languages, so that what they need to do — and what success looks like — is accessible regardless of English proficiency. The same applies to vocabulary lists and challenging concepts, where I do my best to provide models so that no student is left guessing. Assessment design follows the same principle: I work hard to build tasks that don't penalise students for language skills, while also setting a high enough skill ceiling that strong students aren't held back by an assignment that's already been maxed out. The goal is for every student to have a genuine opportunity to do their best work.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.5b</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Design Authentic Learning Activities</p>
-                <p class="iste-sub-official">Consistently designs engaging, authentic learning activities.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>Much of my class is built around extended project work, but a few specific activities stand out as intentionally authentic. The DP web activities — including the material selection text adventure — put students in the position of navigating real constraints: budget, material properties, and tangible project needs, in a format that's more engaging than a worksheet. In grade seven, the Slowest Car Challenge asks students to use only gears to reduce a motor's speed as much as possible — no programming, no controllers, just mechanical problem solving and trial and error. Students have taken real satisfaction in producing cars whose motion is almost imperceptible, which says something about how much more invested they are when the challenge is concrete and the outcome is their own.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.5b</span><p class="iste-sub-title">Design Authentic Learning Activities</p></div>
+            <p class="iste-sub-official">Consistently designs engaging, authentic learning activities.</p>
+            <div class="iste-sub-body"><p>Much of my class is built around extended project work, but a few specific activities stand out as intentionally authentic. The DP web activities — including the material selection text adventure — put students in the position of navigating real constraints: budget, material properties, and tangible project needs, in a format that's more engaging than a worksheet. In grade seven, the Slowest Car Challenge asks students to use only gears to reduce a motor's speed as much as possible — no programming, no controllers, just mechanical problem solving and trial and error. Students have taken real satisfaction in producing cars whose motion is almost imperceptible, which says something about how much more invested they are when the challenge is concrete and the outcome is their own.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.5c</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Innovative, Equitable Learning Environments</p>
-                <p class="iste-sub-official">Expertly creates innovative and equitable learning environments.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>Seating is shuffled regularly to make sure no student ends up consistently out of reach or out of notice. Materials are posted in both English and Chinese, and two screens on different walls mean there are no bad seats for viewing demonstrations or presented content. For the more challenging software used in class I provide considerable support material to ensure students can keep pace regardless of their starting point.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.5c</span><p class="iste-sub-title">Innovative, Equitable Learning Environments</p></div>
+            <p class="iste-sub-official">Expertly creates innovative and equitable learning environments.</p>
+            <div class="iste-sub-body"><p>Seating is shuffled regularly to make sure no student ends up consistently out of reach or out of notice. Materials are posted in both English and Chinese, and two screens on different walls mean there are no bad seats for viewing demonstrations or presented content. For the more challenging software used in class I provide considerable support material to ensure students can keep pace regardless of their starting point.</p></div>
           </div>
 
         </div>
@@ -581,59 +375,27 @@
         <div class="iste-section-body">
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.6a</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Foster Student Ownership of Learning</p>
-                <p class="iste-sub-official">Actively fosters a culture of student ownership.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>The projects I design for students are built around the idea that they should end up with something they're genuinely proud of — something that required real time and effort to produce. That sense of ownership is intentional. As students get older, more autonomy is introduced and they're expected to take an increasingly active role in directing their own work. By the time they reach DP, that autonomy is substantial, and the work reflects it.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.6a</span><p class="iste-sub-title">Foster Student Ownership of Learning</p></div>
+            <p class="iste-sub-official">Actively fosters a culture of student ownership.</p>
+            <div class="iste-sub-body"><p>The projects I design for students are built around the idea that they should end up with something they're genuinely proud of — something that required real time and effort to produce. That sense of ownership is intentional. As students get older, more autonomy is introduced and they're expected to take an increasingly active role in directing their own work. By the time they reach DP, that autonomy is substantial, and the work reflects it.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.6b</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Foster Classroom Management of Tech</p>
-                <p class="iste-sub-official">Expertly manages technology use for optimal learning.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>For younger grades I use Apple Classroom to monitor device use and keep students on task. On the 3D printing side, students are progressively brought into the full workflow — learning to slice files and operate the printers themselves so that, once trained, they can print their own work without needing teacher sign-off at every step. The goal in both cases is the same: technology managed well enough that it stays in service of learning rather than becoming a distraction or a bottleneck.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.6b</span><p class="iste-sub-title">Foster Classroom Management of Tech</p></div>
+            <p class="iste-sub-official">Expertly manages technology use for optimal learning.</p>
+            <div class="iste-sub-body"><p>For younger grades I use Apple Classroom to monitor device use and keep students on task. On the 3D printing side, students are progressively brought into the full workflow — learning to slice files and operate the printers themselves so that, once trained, they can print their own work without needing teacher sign-off at every step. The goal in both cases is the same: technology managed well enough that it stays in service of learning rather than becoming a distraction or a bottleneck.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.6c</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Teach Computational and Design Thinking</p>
-                <p class="iste-sub-official">Consistently teaches and integrates computational and design thinking.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>Free space. There is ample evidence of this throughout the portfolio.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.6c</span><p class="iste-sub-title">Teach Computational and Design Thinking</p></div>
+            <p class="iste-sub-official">Consistently teaches and integrates computational and design thinking.</p>
+            <div class="iste-sub-body"><p>Free space. There is ample evidence of this throughout the portfolio.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.6d</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Model and Nurture Creativity</p>
-                <p class="iste-sub-official">Regularly nurtures and models creativity in student work.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>Students have considerable room to be creative in my classes, but creativity here operates within real-world constraints — specific programs, materials, budgets, timelines. I'd argue those constraints don't inhibit creativity so much as direct it somewhere useful. The guardrails are there to place creative thinking into a context that resembles how design actually works.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.6d</span><p class="iste-sub-title">Model and Nurture Creativity</p></div>
+            <p class="iste-sub-official">Regularly nurtures and models creativity in student work.</p>
+            <div class="iste-sub-body"><p>Students have considerable room to be creative in my classes, but creativity here operates within real-world constraints — specific programs, materials, budgets, timelines. I'd argue those constraints don't inhibit creativity so much as direct it somewhere useful. The guardrails are there to place creative thinking into a context that resembles how design actually works.</p></div>
           </div>
 
         </div>
@@ -654,45 +416,21 @@
         <div class="iste-section-body">
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.7a</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Offer Alternative Assessments</p>
-                <p class="iste-sub-official">Provides a variety of alternative assessments effectively.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>This is the one area where I'll be straightforward: I don't offer alternative assessments, and I'm not especially concerned about that. Every student works on the same project. That said, in a project-based learning context the range of what students actually produce is enormous — the student who completes a project at a basic level of achievement and the student who pushes every criterion to its ceiling have, in many meaningful ways, completed very different projects. The variance lives in the work, not the task.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.7a</span><p class="iste-sub-title">Offer Alternative Assessments</p></div>
+            <p class="iste-sub-official">Provides a variety of alternative assessments effectively.</p>
+            <div class="iste-sub-body"><p>This is the one area where I'll be straightforward: I don't offer alternative assessments, and I'm not especially concerned about that. Every student works on the same project. That said, in a project-based learning context the range of what students actually produce is enormous — the student who completes a project at a basic level of achievement and the student who pushes every criterion to its ceiling have, in many meaningful ways, completed very different projects. The variance lives in the work, not the task.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.7b</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Use Tech to Create Assessments</p>
-                <p class="iste-sub-official">Effectively designs and implements assessments using technology.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>Technology is woven into assessments across the board — students use Canva, Moodle, Teams, and various other tools depending on the task. If a word processor counts, then yes, technology is involved at every level. More deliberately, I've used AI as an ideation tool when developing units and projects — working through possibilities and refining ideas before they reach students. The intent throughout is to use the best tools available to produce the best possible learning experience.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.7b</span><p class="iste-sub-title">Use Tech to Create Assessments</p></div>
+            <p class="iste-sub-official">Effectively designs and implements assessments using technology.</p>
+            <div class="iste-sub-body"><p>Technology is woven into assessments across the board — students use Canva, Moodle, Teams, and various other tools depending on the task. If a word processor counts, then yes, technology is involved at every level. More deliberately, I've used AI as an ideation tool when developing units and projects — working through possibilities and refining ideas before they reach students. The intent throughout is to use the best tools available to produce the best possible learning experience.</p></div>
           </div>
 
           <div class="iste-sub">
-            <button class="iste-sub-toggle" onclick="toggleSub(this)">
-              <span class="iste-sub-code">2.7c</span>
-              <div class="iste-sub-title-wrap">
-                <p class="iste-sub-title">Use Data to Guide Progress</p>
-                <p class="iste-sub-official">Consistently analyzes and uses data to adjust instruction and support students.</p>
-              </div>
-              <svg class="iste-sub-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="iste-sub-body">
-              <p>At the class level I consistently revise units and projects based on how students have performed — what's proved challenging, what's been too straightforward, what needs rebalancing. That feeds into the next iteration of the assessment, whether later that year or the year after. I also draw on reading and literacy data from the school database to identify concerns early and factor that into decisions like seating arrangements — making sure students who need more support are positioned to get it.</p>
-            </div>
+            <div class="iste-sub-header"><span class="iste-sub-code">2.7c</span><p class="iste-sub-title">Use Data to Guide Progress</p></div>
+            <p class="iste-sub-official">Consistently analyzes and uses data to adjust instruction and support students.</p>
+            <div class="iste-sub-body"><p>At the class level I consistently revise units and projects based on how students have performed — what's proved challenging, what's been too straightforward, what needs rebalancing. That feeds into the next iteration of the assessment, whether later that year or the year after. I also draw on reading and literacy data from the school database to identify concerns early and factor that into decisions like seating arrangements — making sure students who need more support are positioned to get it.</p></div>
           </div>
 
         </div>
@@ -709,26 +447,13 @@
     body.classList.toggle('open', !isOpen);
     btn.classList.toggle('open', !isOpen);
     if (!isOpen) {
-      // Slight delay so the content renders before we scroll
       setTimeout(() => {
         btn.closest('.iste-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 30);
     }
   }
-
-  function toggleSub(btn) {
-    const body = btn.nextElementSibling;
-    const isOpen = body.classList.contains('open');
-    body.classList.toggle('open', !isOpen);
-    btn.classList.toggle('open', !isOpen);
-    if (!isOpen) {
-      setTimeout(() => {
-        btn.closest('.iste-sub').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 30);
-    }
-  }
 </script>
-
+  
 <footer class="site-footer">
 <!-- paste your existing footer here -->
 </footer>
