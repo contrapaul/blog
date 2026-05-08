@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025–2026 ISNS Portfolio - Paul Kwiatkowski</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../posts.css">
+<style>
+  .portfolio-wrap {
+    padding: 4rem 2rem 6rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .portfolio-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border, #dde8e5);
+  }
+
+  .portfolio-header h1 {
+    font-family: 'Georgia', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: #2a2a2a;
+    margin: 0 0 1rem;
+    line-height: 1.2;
+  }
+
+  .portfolio-header p {
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #666;
+    max-width: 60ch;
+    margin: 0;
+  }
+
+  /* Card grid — 3 then 2, both centered */
+  .portfolio-grid-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .portfolio-grid-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+  }
+
+  .portfolio-grid-top .p-card {
+    flex: 0 1 calc(33.333% - 1rem);
+    min-width: 220px;
+  }
+
+  .portfolio-grid-bottom .p-card {
+    flex: 0 1 calc(33.333% - 1rem);
+    min-width: 220px;
+  }
+
+  /* Card */
+  .p-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #dde8e5;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .p-card:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+    transform: translateY(-2px);
+    border-color: #4a7c6f;
+    text-decoration: none;
+  }
+
+  .p-card-top {
+    background: #2d5a4e;
+    padding: 1.25rem 1.25rem 1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .p-card-num {
+    font-family: sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .p-card-arrow {
+    color: rgba(255,255,255,0.4);
+    font-size: 1rem;
+    line-height: 1;
+    transition: color 0.15s, transform 0.15s;
+  }
+
+  .p-card:hover .p-card-arrow {
+    color: rgba(255,255,255,0.85);
+    transform: translate(2px, -2px);
+  }
+
+  .p-card-body {
+    padding: 1rem 1.25rem 1.4rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .p-card-title {
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2a2a2a;
+    margin: 0;
+    line-height: 1.35;
+  }
+
+  .p-card-desc {
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    color: #777;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .p-card-tag {
+    display: inline-block;
+    margin-top: auto;
+    padding-top: 0.6rem;
+    font-family: sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: #4a7c6f;
+  }
+
+  @media (max-width: 680px) {
+    .portfolio-grid-top .p-card,
+    .portfolio-grid-bottom .p-card {
+      flex: 1 1 100%;
+    }
+    .portfolio-wrap {
+      padding: 2.5rem 1.25rem 4rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://contrapaul.com" class="back-link">← contrapaul</a>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#writing">Writing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="portfolio-wrap">
+
+    <div class="portfolio-header">
+      <h1>2025–2026 ISNS Portfolio</h1>
+      <p>The following artifacts and articles were created for ISNS, and address my implementation of IB and ISTE standards, ongoing professional growth, and more.</p>
+    </div>
+
+    <!-- Row 1 — 3 cards -->
+    <div class="portfolio-grid-top">
+
+      <a class="p-card" href="https://blog.contrapaul.com/posts/2025-2026-goals">
+        <div class="p-card-top">
+          <span class="p-card-num">01</span>
+          <span class="p-card-arrow">↗</span>
+        </div>
+        <div class="p-card-body">
+          <p class="p-card-title">Annual Goals</p>
+          <p class="p-card-desc">SMART goals for 2025–26, covering 3D printing integration across the school and self-directed microcontroller development — with a full update on outcomes.</p>
+          <span class="p-card-tag">Goals &amp; Reflection</span>
+        </div>
+      </a>
+
+      <a class="p-card" href="https://blog.contrapaul.com/posts/observations25-26">
+        <div class="p-card-top">
+          <span class="p-card-num">02</span>
+          <span class="p-card-arrow">↗</span>
+        </div>
+        <div class="p-card-body">
+          <p class="p-card-title">Formal Observations</p>
+          <p class="p-card-desc">Classroom observations from the DP Coordinator (March 2026) and Division Principal (October 2025), with commentary on feedback received and follow-up actions.</p>
+          <span class="p-card-tag">Observations</span>
+        </div>
+      </a>
+
+      <a class="p-card" href="https://blog.contrapaul.com/posts/iste2526">
+        <div class="p-card-top">
+          <span class="p-card-num">03</span>
+          <span class="p-card-arrow">↗</span>
+        </div>
+        <div class="p-card-body">
+          <p class="p-card-title">ISTE Standards</p>
+          <p class="p-card-desc">A reflective review of all seven ISTE Educator Standards — Learner, Leader, Citizen, Collaborator, Designer, Facilitator, and Analyst — with evidence from this year's practice.</p>
+          <span class="p-card-tag">ISTE 2.1 – 2.7</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Row 2 — 2 cards -->
+    <div class="portfolio-grid-bottom">
+
+      <a class="p-card" href="https://blog.contrapaul.com/posts/PD2526reflection.html">
+        <div class="p-card-top">
+          <span class="p-card-num">04</span>
+          <span class="p-card-arrow">↗</span>
+        </div>
+        <div class="p-card-body">
+          <p class="p-card-title">Professional Development</p>
+          <p class="p-card-desc">Reflection on professional development attended in 2025–26.</p>
+          <span class="p-card-tag">PD Reflection</span>
+        </div>
+      </a>
+
+      <a class="p-card" href="https://blog.contrapaul.com/posts/IBstandards.html">
+        <div class="p-card-top">
+          <span class="p-card-num">05</span>
+          <span class="p-card-arrow">↗</span>
+        </div>
+        <div class="p-card-body">
+          <p class="p-card-title">IB Standards</p>
+          <p class="p-card-desc">Evidence and reflection against IB Standards and Practices, demonstrating alignment between classroom practice and the IB's framework for quality teaching and learning.</p>
+          <span class="p-card-tag">IB Standards</span>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+<!-- paste your existing footer here -->
+</footer>
+
+</body>
+</html>
