@@ -16,24 +16,24 @@
   .portfolio-header {
     margin-bottom: 3rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border, #dde8e5);
+    border-bottom: 1px solid var(--border);
   }
 
   .portfolio-header h1 {
-    font-family: 'Georgia', serif;
+    font-family: var(--font-display);
     font-size: clamp(1.6rem, 4vw, 2.4rem);
     font-weight: 400;
     letter-spacing: -0.02em;
-    color: #2a2a2a;
+    color: var(--text);
     margin: 0 0 1rem;
     line-height: 1.2;
   }
 
   .portfolio-header p {
-    font-family: 'Georgia', serif;
+    font-family: var(--font-display);
     font-size: 1rem;
     line-height: 1.75;
-    color: #666;
+    color: var(--muted);
     max-width: 60ch;
     margin: 0;
   }
@@ -69,8 +69,8 @@
     display: flex;
     flex-direction: column;
     background: #fff;
-    border: 1px solid #dde8e5;
-    border-radius: 8px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     overflow: hidden;
     text-decoration: none;
     transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
@@ -79,12 +79,12 @@
   .p-card:hover {
     box-shadow: 0 6px 24px rgba(0,0,0,0.09);
     transform: translateY(-2px);
-    border-color: #4a7c6f;
+    border-color: var(--accent);
     text-decoration: none;
   }
 
   .p-card-top {
-    background: #2d5a4e;
+    background: var(--accent);
     padding: 1.25rem 1.25rem 1rem;
     display: flex;
     align-items: flex-start;
@@ -93,7 +93,7 @@
   }
 
   .p-card-num {
-    font-family: sans-serif;
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -122,18 +122,18 @@
   }
 
   .p-card-title {
-    font-family: 'Georgia', serif;
+    font-family: var(--font-display);
     font-size: 1rem;
     font-weight: 700;
-    color: #2a2a2a;
+    color: var(--text);
     margin: 0;
     line-height: 1.35;
   }
 
   .p-card-desc {
-    font-family: sans-serif;
+    font-family: var(--font-body);
     font-size: 0.8rem;
-    color: #777;
+    color: var(--muted);
     line-height: 1.55;
     margin: 0;
   }
@@ -142,12 +142,12 @@
     display: inline-block;
     margin-top: auto;
     padding-top: 0.6rem;
-    font-family: sans-serif;
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.09em;
     text-transform: uppercase;
-    color: #4a7c6f;
+    color: var(--accent);
   }
 
   @media (max-width: 680px) {
@@ -167,10 +167,10 @@
   <div class="header-inner">
     <a href="https://contrapaul.com" class="back-link">← contrapaul</a>
     <nav class="nav">
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#writing">Writing</a>
-      <a href="#contact">Contact</a>
+      <a href="https://contrapaul.com/#about">About</a>
+      <a href="https://contrapaul.com/#work">Work</a>
+      <a href="https://contrapaul.com/#writing">Writing</a>
+      <a href="https://contrapaul.com/#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -257,7 +257,10 @@
 </main>
 
 <footer class="site-footer">
-<!-- paste your existing footer here -->
+<div class="footer-inner">
+<a href="https://contrapaul.com" class="footer-home">contrapaul</a>
+<span class="footer-copy">Shenzhen, China</span>
+</div>
 </footer>
 
 </body>
