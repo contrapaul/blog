@@ -7,27 +7,47 @@
 <title>blog · contrapaul</title>
 <link rel="stylesheet" href="WEB/css/jetbrains-mono.css">
 <style>
+/* Warm editorial theme (shared with style.css) — slick chrome, readable content.
+   JetBrains Mono is reserved for UI details; serif headlines + sans body do the reading. */
+:root {
+  --bg:          #faf7f2;
+  --surface:     #f2ede4;
+  --surface-2:   #e8e0d0;
+  --border:      #d8cfc0;
+  --text:        #1a1712;
+  --muted:       #7a7060;
+  --accent:      #c0522a;   /* terracotta */
+  --accent-dark: #a04020;
+  --accent-light:#f0e0d8;
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body:    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono:    'JetBrains Mono', "Courier New", monospace;
+  --transition:   180ms ease;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: 'JetBrains Mono', monospace;
-  background: #1a1a1a;
-  color: #fff;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
 }
 a { color: inherit; text-decoration: none; }
+::selection { background: var(--accent-light); }
 
 /* ========== HEADER (shared with contrapaul.com) ========== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(26,26,26,0.92);
+  background: rgba(250,247,242,0.92);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid var(--border);
 }
 .header-inner {
   max-width: 1100px;
@@ -39,34 +59,36 @@ a { color: inherit; text-decoration: none; }
   justify-content: space-between;
 }
 .wordmark {
-  font-size: 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  opacity: 0.95;
-  transition: opacity 200ms ease;
+  transition: color var(--transition);
 }
-.wordmark:hover { opacity: 1; }
-.nav { display: flex; gap: 0.25rem; }
+.wordmark:hover { color: var(--accent); }
+.nav { display: flex; gap: 0.35rem; }
 .nav a {
-  font-size: 0.8rem;
-  letter-spacing: 0.06em;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 0.35rem 0.75rem;
-  opacity: 0.7;
-  transition: opacity 200ms ease, color 200ms ease, border-color 200ms ease;
+  color: var(--muted);
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
 }
-.nav a:hover { opacity: 1; }
+.nav a:hover { color: var(--text); }
 .nav-tag {
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid var(--border);
   border-radius: 3px;
 }
 .nav-tag:hover {
-  border-color: #FFE536;
-  color: #FFE536;
+  border-color: var(--accent);
+  color: var(--accent);
 }
 .nav-tag.active {
-  border-color: rgba(255,255,255,0.4);
-  opacity: 1;
+  border-color: var(--accent);
+  color: var(--accent-dark);
+  background: var(--accent-light);
 }
 
 /* ========== LAYOUT: side menu + post stack ========== */
@@ -94,23 +116,24 @@ a { color: inherit; text-decoration: none; }
 .sidemenu-toggle {
   display: none;
   width: 100%;
-  font-family: inherit;
-  font-size: 0.8rem;
-  letter-spacing: 0.06em;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #fff;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--text);
+  background: #fff;
+  border: 1px solid var(--border);
   border-radius: 6px;
   padding: 0.6rem 0.9rem;
   cursor: pointer;
   text-align: left;
 }
 .sidemenu-heading {
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  opacity: 0.5;
+  color: var(--accent);
   margin-bottom: 0.75rem;
   padding-left: 0.85rem;
 }
@@ -120,13 +143,12 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.4;
   padding: 0.5rem 0.85rem;
   border-left: 2px solid transparent;
-  opacity: 0.7;
-  transition: opacity 200ms ease, border-color 200ms ease, color 200ms ease;
+  color: var(--muted);
+  transition: color var(--transition), border-color var(--transition);
 }
 .sidemenu-list a:hover {
-  opacity: 1;
-  color: #FFE536;
-  border-left-color: #FFE536;
+  color: var(--accent);
+  border-left-color: var(--accent);
 }
 
 /* ----- post stack ----- */
@@ -138,7 +160,7 @@ a { color: inherit; text-decoration: none; }
   gap: 1.75rem;
 }
 
-/* ========== POST CARD (glass theme from contrapaul.com) ========== */
+/* ========== POST CARD (glass frame, warm edition) ========== */
 @property --glass-angle {
   syntax: '<angle>';
   initial-value: 0deg;
@@ -148,20 +170,19 @@ a { color: inherit; text-decoration: none; }
   to { --glass-angle: 360deg; }
 }
 .post-card {
-  border-radius: 22px;
-  padding: 5px;
+  border-radius: 20px;
+  padding: 4px;
   background: conic-gradient(from var(--glass-angle),
-    rgba(255,255,255,0.3), rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+    rgba(192,82,42,0.30), rgba(216,207,192,0.4), rgba(192,82,42,0.30));
   animation: glass-spin 8s linear infinite;
   scroll-margin-top: 84px;
 }
 .post-card-interior {
-  border-radius: 17px;
+  border-radius: 16px;
   padding: 1.75rem;
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.2);
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 2px rgba(26,23,18,0.04), 0 12px 32px rgba(26,23,18,0.05);
 }
 .post-meta {
   display: flex;
@@ -172,31 +193,37 @@ a { color: inherit; text-decoration: none; }
 }
 .post-tag {
   display: inline-block;
-  background: rgba(255,255,255,0.15);
+  font-family: var(--font-mono);
+  background: var(--accent-light);
+  color: var(--accent-dark);
   padding: 0.3rem 0.75rem;
   border-radius: 20px;
-  font-size: 0.65rem;
-  letter-spacing: 0.5px;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-weight: bold;
-  backdrop-filter: blur(4px);
+  font-weight: 700;
 }
 .post-date {
+  font-family: var(--font-mono);
   font-size: 0.72rem;
-  opacity: 0.6;
+  letter-spacing: 0.04em;
+  color: var(--muted);
 }
 .post-card h2 {
-  font-size: 1.45rem;
-  line-height: 1.3;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
   margin-bottom: 0.75rem;
-  color: rgba(255,255,255,0.95);
-  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  color: var(--text);
 }
 .post-excerpt {
-  font-size: 0.85rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.8);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--muted);
   margin-bottom: 1.25rem;
+  max-width: 65ch;
 }
 .post-actions {
   display: flex;
@@ -205,22 +232,23 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 1.5rem;
 }
 .post-btn {
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
   padding: 0.5rem 0.9rem;
   border-radius: 6px;
-  border: 1px solid #FFE536;
-  background: rgba(255,229,54,0.08);
+  border: 1px solid var(--accent);
+  background: rgba(192,82,42,0.05);
   cursor: pointer;
-  color: #FFE536;
-  font-family: inherit;
-  transition: background 0.2s ease;
+  color: var(--accent);
+  transition: background 0.2s ease, color 0.2s ease;
 }
-.post-btn:hover { background: rgba(255,229,54,0.18); }
+.post-btn:hover { background: var(--accent); color: #fff; }
 
-/* ----- embedded post body: black on white, rounded ----- */
+/* ----- embedded post body ----- */
 .post-body {
   background: #fff;
+  border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
 }
@@ -234,8 +262,8 @@ a { color: inherit; text-decoration: none; }
 /* ========== FOOTER (shared with contrapaul.com) ========== */
 .site-footer {
   margin-top: auto;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  background: rgba(26,26,26,0.92);
+  border-top: 1px solid var(--border);
+  background: var(--surface);
 }
 .footer-inner {
   max-width: 1100px;
@@ -244,8 +272,9 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.8rem;
-  opacity: 0.7;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
 }
 
 /* ========== MOBILE ========== */
@@ -263,7 +292,7 @@ a { color: inherit; text-decoration: none; }
   .sidemenu-list {
     display: none;
     margin-top: 0.6rem;
-    border-left: 1px solid rgba(255,255,255,0.15);
+    border-left: 1px solid var(--border);
   }
   .sidemenu.open .sidemenu-list { display: flex; }
 }
