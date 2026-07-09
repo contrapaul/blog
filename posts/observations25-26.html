@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Post Title — contrapaul</title>
+<title>Lesson Observations 2025–26 — contrapaul</title>
+<link rel="stylesheet" href="../WEB/css/jetbrains-mono.css">
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="../posts.css">
 </head>
@@ -12,10 +13,10 @@
 <div class="header-inner">
 <a href="https://contrapaul.com" class="back-link">← contrapaul</a>
 <nav class="nav">
-<a href="#about">About</a>
-<a href="#work">Work</a>
-<a href="#writing">Writing</a>
-<a href="#contact">Contact</a>
+<a href="https://contrapaul.com/#about">About</a>
+<a href="https://contrapaul.com/#work">Work</a>
+<a href="https://contrapaul.com/#writing">Writing</a>
+<a href="https://contrapaul.com/#contact">Contact</a>
 </nav>
 </div>
 </header>
@@ -26,9 +27,12 @@
       <a href="/" class="back-link">← Back</a>
       <time>2026-05-05</time>
     </div>
+
+    <h1>Lesson Observations 2025–26</h1>
+    <p class="post-subtitle">Notes and takeaways from classroom observations across the year.</p>
     <!-- Observations Post — full page content, drop inside .post-inner -->
 <style>
-  .obs-wrap { font-family: 'Georgia', serif; padding: 0 0 2rem; }
+  .obs-wrap { font-family: var(--font-display); padding: 0 0 2rem; }
 
   /* Image block */
   .obs-img-block { margin-bottom: 2rem; }
@@ -38,8 +42,8 @@
     width: 100%;
     object-fit: cover;
     object-position: top;
-    border-radius: 8px;
-    border: 1px solid #dde8e5;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
     display: block;
   }
   .obs-img-meta {
@@ -49,37 +53,37 @@
     margin-top: 0.55rem;
   }
   .obs-img-date {
-    font-family: sans-serif;
+    font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #4a7c6f;
+    color: var(--accent);
   }
   .obs-img-caption {
-    font-family: sans-serif;
+    font-family: var(--font-body);
     font-size: 0.72rem;
-    color: #999;
+    color: var(--muted);
     font-style: italic;
   }
 
   /* Cards */
   .obs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
-  .obs-card { background: #fff; border: 1px solid #dde8e5; border-radius: 8px; padding: 0.9rem 1.1rem; }
-  .obs-card-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; color: #4a7c6f; text-transform: uppercase; margin: 0 0 6px; font-family: sans-serif; }
-  .obs-card-content { font-size: 0.88rem; color: #2a2a2a; line-height: 1.6; margin: 0; }
-  .obs-card-link { display: inline-block; margin-top: 0.65rem; font-family: sans-serif; font-size: 0.78rem; font-weight: 700; color: #2d5a4e; text-decoration: none; border: 1px solid #4a7c6f; border-radius: 4px; padding: 0.25rem 0.65rem; letter-spacing: 0.03em; transition: background 0.15s, color 0.15s; }
-  .obs-card-link:hover { background: #2d5a4e; color: #fff; }
+  .obs-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1.1rem; }
+  .obs-card-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; margin: 0 0 6px; font-family: var(--font-mono); }
+  .obs-card-content { font-size: 0.88rem; color: var(--text); line-height: 1.6; margin: 0; }
+  .obs-card-link { display: inline-block; margin-top: 0.65rem; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--accent); text-decoration: none; border: 1px solid var(--accent); border-radius: var(--radius); padding: 0.25rem 0.65rem; letter-spacing: 0.03em; transition: background 0.15s, color 0.15s; }
+  .obs-card-link:hover { background: var(--accent); color: #fff; }
 
   /* Commentary */
-  .obs-commentary { font-size: 1rem; line-height: 1.85; color: #2a2a2a; margin-bottom: 0; }
+  .obs-commentary { font-size: 1rem; line-height: 1.85; color: var(--text); margin-bottom: 0; }
   .obs-commentary p { margin: 0 0 1.2em; }
   .obs-commentary p:last-child { margin-bottom: 0; }
 
   /* Divider between observations */
   .obs-divider {
     border: none;
-    border-top: 1px solid #dde8e5;
+    border-top: 1px solid var(--border);
     margin: 3rem 0;
   }
 </style>
@@ -158,7 +162,10 @@
     </article>
 
 <footer class="site-footer">
-<!-- paste your existing footer here -->
+<div class="footer-inner">
+<a href="https://contrapaul.com" class="footer-home">contrapaul</a>
+<span class="footer-copy">Shenzhen, China</span>
+</div>
 </footer>
 
 </body>

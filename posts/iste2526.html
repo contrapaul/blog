@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ISTE Standards for 2025-2026</title>
+<link rel="stylesheet" href="../WEB/css/jetbrains-mono.css">
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="../posts.css">
 </head>
@@ -12,10 +13,10 @@
 <div class="header-inner">
 <a href="https://contrapaul.com" class="back-link">← contrapaul</a>
 <nav class="nav">
-<a href="#about">About</a>
-<a href="#work">Work</a>
-<a href="#writing">Writing</a>
-<a href="#contact">Contact</a>
+<a href="https://contrapaul.com/#about">About</a>
+<a href="https://contrapaul.com/#work">Work</a>
+<a href="https://contrapaul.com/#writing">Writing</a>
+<a href="https://contrapaul.com/#contact">Contact</a>
 </nav>
 </div>
 </header>
@@ -24,8 +25,8 @@
   .iste-wrap { margin: 2.5rem 0; }
 
   .iste-section {
-    border: 1px solid var(--border, #dde8e5);
-    border-radius: 8px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     margin-bottom: 0.75rem;
     overflow: hidden;
     scroll-margin-top: 80px;
@@ -37,16 +38,16 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    background: #2d5a4e;
+    background: var(--accent);
     color: #fff;
     border: none;
     padding: 1rem 1.25rem;
     cursor: pointer;
     text-align: left;
-    font-family: 'Georgia', serif;
+    font-family: var(--font-display);
     gap: 1rem;
   }
-  .iste-section-toggle:hover { background: #255047; }
+  .iste-section-toggle:hover { background: #a04020; }
 
   .iste-section-title {
     font-size: 1rem;
@@ -56,7 +57,7 @@
     line-height: 1.3;
   }
   .iste-section-label {
-    font-family: sans-serif;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -84,13 +85,13 @@
   /* Section body */
   .iste-section-body {
     display: none;
-    background: #f7fbfa;
-    border-top: 1px solid #dde8e5;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
   }
   .iste-section-body.open { display: block; }
 
   /* Sub-section — static, always visible */
-  .iste-sub { border-bottom: 1px solid #dde8e5; }
+  .iste-sub { border-bottom: 1px solid var(--border); }
   .iste-sub:last-child { border-bottom: none; }
 
   .iste-sub-header {
@@ -100,27 +101,27 @@
     padding: 1rem 1.25rem 0.2rem;
   }
   .iste-sub-code {
-    font-family: sans-serif;
+    font-family: var(--font-mono);
     font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #4a7c6f;
+    color: var(--accent);
     white-space: nowrap;
     flex-shrink: 0;
   }
   .iste-sub-title {
-    font-family: sans-serif;
+    font-family: var(--font-body);
     font-size: 0.9rem;
     font-weight: 700;
-    color: #2a2a2a;
+    color: var(--text);
     margin: 0;
     line-height: 1.3;
   }
   .iste-sub-official {
-    font-family: sans-serif;
+    font-family: var(--font-body);
     font-size: 0.75rem;
-    color: #999;
+    color: var(--muted);
     font-style: italic;
     margin: 0;
     padding: 0.15rem 1.25rem 0.6rem 1.25rem;
@@ -128,33 +129,31 @@
   }
   .iste-sub-body {
     padding: 0 1.25rem 1.1rem;
-    font-family: 'Georgia', serif;
+    font-family: var(--font-display);
     font-size: 0.92rem;
     line-height: 1.8;
-    color: #2a2a2a;
+    color: var(--text);
   }
   .iste-sub-body p { margin: 0 0 0.9em; }
   .iste-sub-body p:last-child { margin-bottom: 0; }
   .iste-sub-body a {
-    color: #2d5a4e;
+    color: var(--accent);
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-thickness: 1px;
   }
-  .iste-sub-body a:hover { color: #4a7c6f; }
+  .iste-sub-body a:hover { color: #a04020; }
 
   /* Intro */
   .iste-intro {
-    font-family: 'Georgia', serif;
+    font-family: var(--font-display);
     font-size: 1rem;
     line-height: 1.85;
-    color: #2a2a2a;
+    color: var(--text);
     margin-bottom: 2rem;
   }
   .iste-intro p { margin: 0 0 1em; }
 </style>
-</head>
-<body>
 
 <article class="post">
   <div class="post-inner">
@@ -477,7 +476,10 @@
 </script>
   
 <footer class="site-footer">
-<!-- paste your existing footer here -->
+<div class="footer-inner">
+<a href="https://contrapaul.com" class="footer-home">contrapaul</a>
+<span class="footer-copy">Shenzhen, China</span>
+</div>
 </footer>
 
 </body>
