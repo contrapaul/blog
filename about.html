@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="About Paul Kwiatkowski, Design Technology teacher, maker, 3D printing creator, and designer based in Shenzhen.">
+<title>About - contrapaul blog</title>
+<link rel="stylesheet" href="WEB/css/jetbrains-mono.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+<div class="header-inner">
+<a href="https://contrapaul.com" class="back-link">← contrapaul</a>
+<nav class="nav">
+<a href="about.html">About</a>
+<a href="index.html">Posts</a>
+<a href="https://edu.contrapaul.com">Edu</a>
+<a href="https://make.contrapaul.com">Make</a>
+</nav>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="hero-inner">
+<div class="profile-block">
+<div class="profile-image-wrap">
+<div class="profile-image-placeholder">PK</div>
+</div>
+<div>
+<h1 class="name">Paul Kwiatkowski</h1>
+<p class="tagline">Designer. Educator. Maker.</p>
+<p class="location">Shenzhen, China</p>
+<p class="bio-short">I teach Design Technology at the IB Diploma level in Shenzhen, where I also spend too much time designing 3D models, soldering microcontrollers, and documenting all of it. My work sits at the intersection of design thinking, making, and technology education.</p>
+<div class="profile-links">
+<a href="https://github.com/" class="btn-secondary" target="_blank" rel="noopener">GitHub</a>
+<a href="https://makerworld.com/" class="btn-secondary" target="_blank" rel="noopener">MakerWorld</a>
+<a href="https://printables.com/" class="btn-secondary" target="_blank" rel="noopener">Printables</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section-inner">
+<div class="contact-block">
+<h2 class="contact-title">Get in touch</h2>
+<p class="contact-lede">Suggestions, corrections, collaboration, always happy to hear from teachers and students.</p>
+<form class="contact-form" id="contact-form" novalidate>
+<label class="contact-field">
+<span class="contact-label">Name</span>
+<input type="text" name="name" required autocomplete="name" maxlength="100">
+</label>
+<label class="contact-field">
+<span class="contact-label">Email</span>
+<input type="email" name="email" required autocomplete="email" maxlength="200">
+</label>
+<label class="contact-field">
+<span class="contact-label">Message</span>
+<textarea name="message" rows="4" required maxlength="5000"></textarea>
+</label>
+<input type="text" name="company" class="contact-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<button type="submit" class="contact-submit" id="contact-submit">Send message</button>
+<div class="contact-status" id="contact-status" role="status" aria-live="polite"></div>
+</form>
+<div class="contact-fallback">Or email <a href="mailto:hello@contrapaul.com">hello@contrapaul.com</a></div>
+</div>
+</section>
+</main>
+
+<footer class="site-footer">
+<div class="footer-inner">
+<a href="https://contrapaul.com" class="footer-home">contrapaul</a>
+<span class="footer-copy">Shenzhen, China</span>
+</div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var btn = document.getElementById('contact-submit');
+  var statusEl = document.getElementById('contact-status');
+
+  function setStatus(msg, kind) {
+    statusEl.textContent = msg;
+    statusEl.className = 'contact-status' + (kind ? ' is-' + kind : '');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    setStatus('', '');
+    var fd = new FormData(form);
+
+    /* Honeypot: real users never fill this hidden field */
+    if ((fd.get('company') || '').trim()) {
+      setStatus('Thanks, your message has been sent.', 'success');
+      form.reset();
+      return;
+    }
+
+    var payload = {
+      name: (fd.get('name') || '').trim(),
+      email: (fd.get('email') || '').trim(),
+      message: (fd.get('message') || '').trim()
+    };
+    if (!payload.name || !payload.email || !payload.message) {
+      setStatus('Please fill in all fields.', 'error');
+      return;
+    }
+
+    var original = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (res) {
+      return res.json().catch(function () { return {}; }).then(function (body) {
+        if (res.ok) {
+          setStatus('Thanks, your message has been sent.', 'success');
+          form.reset();
+        } else {
+          setStatus(body.error || 'Something went wrong. Please use the email link below.', 'error');
+        }
+      });
+    }).catch(function () {
+      setStatus('Network error. Please use the email link below.', 'error');
+    }).finally(function () {
+      btn.disabled = false;
+      btn.textContent = original;
+    });
+  });
+})();
+</script>
+</body>
+</html>
