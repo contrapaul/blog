@@ -72,15 +72,10 @@ textarea.code {
 <body>
 <div class="wrap">
 <h1>New post</h1>
-<p class="intro">
-  Local authoring tool — nothing here touches the repo directly.
   <ol>
-    <li>Fill in the fields and write the post below.</li>
-    <li>Click <strong>Generate Code</strong>.</li>
     <li>Copy the post code and save it as a new file at <code>posts/&lt;filename&gt;</code> in VS Code.</li>
     <li>Copy the manifest line into the array in <code>posts/manifest.json</code>, then save.</li>
   </ol>
-  That's it — the homepage picks it up automatically, sorted by date. No editing of <code>index.html</code>.
 </p>
 
 <fieldset>
@@ -135,7 +130,7 @@ textarea.code {
   <button type="button" data-cmd="removeFormat">Clear</button>
 </div>
 <div id="editor" contenteditable="true" data-placeholder="Write your post here…"></div>
-<p class="hint">Images: no upload happens here — copy the image file into the repo yourself (e.g. an <code>images/</code> folder), then use the Image button with its relative path.</p>
+<p class="hint">Images: no upload happens here - copy the image file into the repo yourself (e.g. an <code>images/</code> folder), then use the Image button with its relative path.</p>
 </fieldset>
 
 <div class="actions">
