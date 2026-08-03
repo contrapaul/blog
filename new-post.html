@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New post — contrapaul</title>
+<link rel="stylesheet" href="WEB/css/jetbrains-mono.css">
+<link rel="stylesheet" href="style.css">
+<style>
+:root {
+  --bg: #faf7f2; --surface: #f2ede4; --surface-2: #e8e0d0; --border: #d8cfc0;
+  --text: #1a1712; --muted: #7a7060; --accent: #c0522a; --accent-dark: #a04020;
+  --accent-light: #f0e0d8; --font-display: Georgia, "Times New Roman", serif;
+  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', "Courier New", monospace; --radius: 10px;
+}
+* { box-sizing: border-box; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); margin: 0; }
+.wrap { max-width: 900px; margin: 0 auto; padding: 2.5rem 2rem 6rem; }
+h1 { font-family: var(--font-display); font-weight: 400; font-size: 1.9rem; margin: 0 0 0.4rem; }
+.intro { color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 2rem; max-width: 65ch; }
+.intro ol { padding-left: 1.2rem; margin: 0.5rem 0 0; }
+fieldset { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem 1.5rem; margin: 0 0 1.5rem; background: #fff; }
+legend { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); padding: 0 0.5rem; }
+.field-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.field { flex: 1 1 200px; display: flex; flex-direction: column; gap: 0.35rem; }
+.field.full { flex-basis: 100%; }
+label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+input[type="text"], input[type="date"], textarea {
+  font-family: var(--font-body); font-size: 0.9rem; padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text);
+}
+input:focus, textarea:focus, [contenteditable]:focus { outline: 2px solid var(--accent-light); border-color: var(--accent); }
+.hint { font-size: 0.75rem; color: var(--muted); }
+
+.toolbar { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.6rem; }
+.toolbar button {
+  font-family: var(--font-mono); font-size: 0.72rem; padding: 0.4rem 0.65rem;
+  border: 1px solid var(--border); border-radius: 6px; background: #fff; color: var(--text); cursor: pointer;
+}
+.toolbar button:hover { border-color: var(--accent); color: var(--accent); }
+
+#editor {
+  min-height: 300px; border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.25rem 1.5rem; background: #fff; font-family: var(--font-display);
+  font-size: 1.02rem; line-height: 1.75;
+}
+#editor:empty:before { content: attr(data-placeholder); color: var(--muted); }
+#editor h2 { font-size: 1.35rem; }
+#editor h3 { font-size: 1.05rem; }
+#editor blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin-left: 0; color: var(--muted); font-style: italic; }
+#editor code { font-family: var(--font-mono); background: var(--surface-2); padding: 0.1em 0.35em; border-radius: 3px; }
+#editor img { max-width: 100%; border-radius: 6px; border: 1px solid var(--border); }
+#editor a { color: var(--accent); }
+
+.actions { display: flex; gap: 0.75rem; margin: 1.5rem 0; flex-wrap: wrap; }
+.btn { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.03em; padding: 0.65rem 1.1rem; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: #fff; cursor: pointer; }
+.btn.secondary { background: #fff; color: var(--accent); }
+.btn:hover { opacity: 0.9; }
+
+.output { margin-bottom: 1.75rem; }
+.output-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem; }
+.output-head h2 { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text); margin: 0; }
+textarea.code {
+  width: 100%; font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.5;
+  background: #1a1712; color: #f2ede4; border: none; border-radius: 8px; padding: 1rem; resize: vertical;
+}
+#outputCode { height: 320px; }
+#manifestLine { height: 44px; resize: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>New post</h1>
+<p class="intro">
+  Local authoring tool — nothing here touches the repo directly.
+  <ol>
+    <li>Fill in the fields and write the post below.</li>
+    <li>Click <strong>Generate Code</strong>.</li>
+    <li>Copy the post code and save it as a new file at <code>posts/&lt;filename&gt;</code> in VS Code.</li>
+    <li>Copy the manifest line into the array in <code>posts/manifest.json</code>, then save.</li>
+  </ol>
+  That's it — the homepage picks it up automatically, sorted by date. No editing of <code>index.html</code>.
+</p>
+
+<fieldset>
+<legend>Details</legend>
+<div class="field-row">
+  <div class="field">
+    <label for="fieldTitle">Title</label>
+    <input type="text" id="fieldTitle" placeholder="Post title">
+  </div>
+  <div class="field">
+    <label for="fieldDate">Date</label>
+    <input type="date" id="fieldDate">
+  </div>
+  <div class="field">
+    <label for="fieldTag">Topic</label>
+    <input type="text" id="fieldTag" list="tagOptions" placeholder="Teaching">
+    <datalist id="tagOptions">
+      <option value="Teaching"><option value="Reflection"><option value="Portfolio">
+    </datalist>
+  </div>
+</div>
+<div class="field-row">
+  <div class="field full">
+    <label for="fieldExcerpt">Excerpt (shown on the homepage card)</label>
+    <textarea id="fieldExcerpt" rows="2" placeholder="One or two sentences summarizing the post."></textarea>
+  </div>
+</div>
+<div class="field-row">
+  <div class="field full">
+    <label for="fieldFilename">Filename</label>
+    <input type="text" id="fieldFilename" placeholder="auto-generated-from-title.html">
+    <span class="hint">Auto-fills from the title — edit freely, must end in .html</span>
+  </div>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Post body</legend>
+<div class="toolbar">
+  <button type="button" data-cmd="bold" title="Bold"><b>B</b></button>
+  <button type="button" data-cmd="italic" title="Italic"><i>I</i></button>
+  <button type="button" data-block="H2">H2</button>
+  <button type="button" data-block="H3">H3</button>
+  <button type="button" data-block="P">¶</button>
+  <button type="button" data-block="BLOCKQUOTE">Quote</button>
+  <button type="button" id="btnCode">Code</button>
+  <button type="button" data-cmd="insertUnorderedList">• List</button>
+  <button type="button" data-cmd="insertOrderedList">1. List</button>
+  <button type="button" id="btnLink">Link</button>
+  <button type="button" id="btnImage">Image</button>
+  <button type="button" data-cmd="insertHorizontalRule">―</button>
+  <button type="button" data-cmd="removeFormat">Clear</button>
+</div>
+<div id="editor" contenteditable="true" data-placeholder="Write your post here…"></div>
+<p class="hint">Images: no upload happens here — copy the image file into the repo yourself (e.g. an <code>images/</code> folder), then use the Image button with its relative path.</p>
+</fieldset>
+
+<div class="actions">
+  <button type="button" class="btn" id="btnGenerate">Generate Code</button>
+</div>
+
+<div class="output">
+  <div class="output-head">
+    <h2>posts/<span id="filenameHint">&lt;filename&gt;</span></h2>
+    <button type="button" class="btn secondary" id="btnCopyCode">Copy Code</button>
+  </div>
+  <textarea class="code" id="outputCode" readonly placeholder="Click Generate Code above."></textarea>
+</div>
+
+<div class="output">
+  <div class="output-head">
+    <h2>Add to posts/manifest.json</h2>
+    <button type="button" class="btn secondary" id="btnCopyManifest">Copy Line</button>
+  </div>
+  <textarea class="code" id="manifestLine" readonly placeholder="Click Generate Code above."></textarea>
+</div>
+
+</div>
+
+<script>
+(function () {
+  var editor = document.getElementById('editor');
+  var titleInput = document.getElementById('fieldTitle');
+  var dateInput = document.getElementById('fieldDate');
+  var tagInput = document.getElementById('fieldTag');
+  var excerptInput = document.getElementById('fieldExcerpt');
+  var filenameInput = document.getElementById('fieldFilename');
+
+  dateInput.value = new Date().toISOString().slice(0, 10);
+
+  function slugify(s) {
+    return s.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-+|-+$)/g, '');
+  }
+
+  var filenameTouched = false;
+  filenameInput.addEventListener('input', function () { filenameTouched = true; });
+  titleInput.addEventListener('input', function () {
+    if (!filenameTouched) filenameInput.value = slugify(titleInput.value) + '.html';
+  });
+
+  editor.addEventListener('focus', function () {
+    document.execCommand('defaultParagraphSeparator', false, 'p');
+  });
+
+  document.querySelectorAll('.toolbar button[data-cmd]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      editor.focus();
+      document.execCommand(btn.dataset.cmd, false, null);
+    });
+  });
+
+  document.querySelectorAll('.toolbar button[data-block]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      editor.focus();
+      document.execCommand('formatBlock', false, btn.dataset.block);
+    });
+  });
+
+  document.getElementById('btnLink').addEventListener('click', function () {
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed) { alert('Select some text first, then click Link.'); return; }
+    var url = prompt('Link URL:', 'https://');
+    if (!url) return;
+    editor.focus();
+    document.execCommand('createLink', false, url);
+  });
+
+  document.getElementById('btnImage').addEventListener('click', function () {
+    var src = prompt('Image path (relative to the posts/ folder), e.g. images/photo.jpg:');
+    if (!src) return;
+    var alt = prompt('Alt text (short description for accessibility):', '') || '';
+    editor.focus();
+    document.execCommand('insertHTML', false,
+      '<img src="' + escapeAttr(src) + '" alt="' + escapeAttr(alt) + '">');
+  });
+
+  document.getElementById('btnCode').addEventListener('click', function () {
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed || !sel.rangeCount) { alert('Select some text first, then click Code.'); return; }
+    var range = sel.getRangeAt(0);
+    var wrapper = document.createElement('code');
+    try {
+      range.surroundContents(wrapper);
+    } catch (e) {
+      wrapper.appendChild(range.extractContents());
+      range.insertNode(wrapper);
+    }
+    sel.removeAllRanges();
+  });
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function escapeAttr(s) { return escapeHtml(s); }
+
+  function cleanBodyHtml() {
+    var clone = editor.cloneNode(true);
+    clone.querySelectorAll('*').forEach(function (el) { el.removeAttribute('style'); });
+    return clone.innerHTML.trim();
+  }
+
+  document.getElementById('btnGenerate').addEventListener('click', function () {
+    var title = titleInput.value.trim();
+    var date = dateInput.value.trim();
+    var tag = tagInput.value.trim();
+    var excerpt = excerptInput.value.trim();
+    var filename = filenameInput.value.trim() || (slugify(title) + '.html');
+    if (!/\.html$/i.test(filename)) filename += '.html';
+
+    if (!title || !date) { alert('Title and date are required.'); return; }
+
+    var bodyHtml = cleanBodyHtml();
+
+    var page = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n' +
+      '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
+      '<title>' + escapeHtml(title) + ' — contrapaul</title>\n' +
+      '<meta name="description" content="' + escapeAttr(excerpt) + '">\n' +
+      '<meta name="post-title" content="' + escapeAttr(title) + '">\n' +
+      '<meta name="post-date" content="' + date + '">\n' +
+      '<meta name="post-tag" content="' + escapeAttr(tag) + '">\n' +
+      '<link rel="stylesheet" href="../WEB/css/jetbrains-mono.css">\n' +
+      '<link rel="stylesheet" href="../style.css">\n' +
+      '<link rel="stylesheet" href="../posts.css">\n' +
+      '</head>\n<body>\n' +
+      '<header class="site-header">\n<div class="header-inner">\n' +
+      '<a href="https://contrapaul.com" class="back-link">← contrapaul</a>\n' +
+      '<nav class="nav">\n<a href="https://contrapaul.com/#about">About</a>\n' +
+      '<a href="https://contrapaul.com/#work">Work</a>\n' +
+      '<a href="https://contrapaul.com/#writing">Writing</a>\n' +
+      '<a href="https://contrapaul.com/#contact">Contact</a>\n</nav>\n</div>\n</header>\n\n' +
+      '<article class="post">\n  <div class="post-inner">\n' +
+      '    <div class="post-meta-top">\n      <a href="/" class="back-link">← Back</a>\n' +
+      '      <time datetime="' + date + '">' + date + '</time>\n    </div>\n\n' +
+      '    <h1>' + escapeHtml(title) + '</h1>\n' +
+      '    <p class="post-subtitle">' + escapeHtml(excerpt) + '</p>\n\n' +
+      '    <div class="post-body">\n' + bodyHtml + '\n    </div>\n  </div>\n</article>\n\n' +
+      '<footer class="site-footer">\n<div class="footer-inner">\n' +
+      '<a href="https://contrapaul.com" class="footer-home">contrapaul</a>\n' +
+      '<span class="footer-copy">Shenzhen, China</span>\n</div>\n</footer>\n</body>\n</html>\n';
+
+    document.getElementById('outputCode').value = page;
+    document.getElementById('manifestLine').value = '  "' + filename + '",';
+    document.getElementById('filenameHint').textContent = filename;
+  });
+
+  function wireCopy(btnId, sourceId) {
+    document.getElementById(btnId).addEventListener('click', function () {
+      var el = document.getElementById(sourceId);
+      if (!el.value) return;
+      el.select();
+      navigator.clipboard.writeText(el.value).then(function () {
+        var btn = document.getElementById(btnId);
+        var original = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(function () { btn.textContent = original; }, 1500);
+      });
+    });
+  }
+  wireCopy('btnCopyCode', 'outputCode');
+  wireCopy('btnCopyManifest', 'manifestLine');
+})();
+</script>
+</body>
+</html>

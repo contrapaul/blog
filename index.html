@@ -296,6 +296,13 @@ a { color: inherit; text-decoration: none; }
   }
   .sidemenu.open .sidemenu-list { display: flex; }
 }
+
+.posts-status {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding: 1rem 0.25rem;
+}
 </style>
 </head>
 <body>
@@ -316,129 +323,16 @@ a { color: inherit; text-decoration: none; }
 <!-- Left gutter: balances the right menu so the stack stays centered -->
 <div class="layout-spacer" aria-hidden="true"></div>
 
-<!-- Post stack (newest first) -->
-<section class="post-stack">
-
-<article class="post-card" id="post-portfolio">
-<div class="post-card-interior">
-<div class="post-meta">
-<span class="post-tag">Portfolio</span>
-<span class="post-date">2025–2026</span>
-</div>
-<h2>2025–2026 ISNS Portfolio</h2>
-<p class="post-excerpt">The full year in one place — a hub linking goals, standards, professional development, and observations from the 2025–26 school year.</p>
-<div class="post-actions">
-<a class="post-btn" href="posts/portfolio-2526.html" target="_blank" rel="noopener">Link to this Article ↗</a>
-</div>
-<div class="post-body"><iframe src="posts/portfolio-2526.html" title="2025–2026 ISNS Portfolio" loading="lazy"></iframe></div>
-</div>
-</article>
-
-<article class="post-card" id="post-pd">
-<div class="post-card-interior">
-<div class="post-meta">
-<span class="post-tag">Reflection</span>
-<span class="post-date">2026-05-08</span>
-</div>
-<h2>Professional Development Reflections</h2>
-<p class="post-excerpt">Looking back on the PD I delivered and attended across the year, and what actually stuck.</p>
-<div class="post-actions">
-<a class="post-btn" href="posts/PD2526reflection.html" target="_blank" rel="noopener">Link to this Article ↗</a>
-</div>
-<div class="post-body"><iframe src="posts/PD2526reflection.html" title="Professional Development Reflections" loading="lazy"></iframe></div>
-</div>
-</article>
-
-<article class="post-card" id="post-iste2526">
-<div class="post-card-interior">
-<div class="post-meta">
-<span class="post-tag">Teaching</span>
-<span class="post-date">2026-05-07</span>
-</div>
-<h2>ISTE Standards 2025–26</h2>
-<p class="post-excerpt">A breakdown of how the technology I used in class and personally maps onto the ISTE standards this year.</p>
-<div class="post-actions">
-<a class="post-btn" href="posts/iste2526.html" target="_blank" rel="noopener">Link to this Article ↗</a>
-</div>
-<div class="post-body"><iframe src="posts/iste2526.html" title="ISTE Standards 2025–26" loading="lazy"></iframe></div>
-</div>
-</article>
-
-<article class="post-card" id="post-goals">
-<div class="post-card-interior">
-<div class="post-meta">
-<span class="post-tag">Teaching</span>
-<span class="post-date">2026-05-05</span>
-</div>
-<h2>2025–2026 SMART Goals</h2>
-<p class="post-excerpt">What I chose to officially work toward this year — a strategic 3D-printing goal and a self-directed microcontroller goal — with end-of-year progress.</p>
-<div class="post-actions">
-<a class="post-btn" href="posts/2025-2026-goals.html" target="_blank" rel="noopener">Link to this Article ↗</a>
-</div>
-<div class="post-body"><iframe src="posts/2025-2026-goals.html" title="2025–2026 SMART Goals" loading="lazy"></iframe></div>
-</div>
-</article>
-
-<article class="post-card" id="post-observations">
-<div class="post-card-interior">
-<div class="post-meta">
-<span class="post-tag">Teaching</span>
-<span class="post-date">2026-05-05</span>
-</div>
-<h2>Lesson Observations 2025–26</h2>
-<p class="post-excerpt">Notes and takeaways from classroom observations across the year.</p>
-<div class="post-actions">
-<a class="post-btn" href="posts/observations25-26.html" target="_blank" rel="noopener">Link to this Article ↗</a>
-</div>
-<div class="post-body"><iframe src="posts/observations25-26.html" title="Lesson Observations 2025–26" loading="lazy"></iframe></div>
-</div>
-</article>
-
-<article class="post-card" id="post-ib">
-<div class="post-card-interior">
-<div class="post-meta">
-<span class="post-tag">Teaching</span>
-<span class="post-date">2026-04-23</span>
-</div>
-<h2>IB Teaching &amp; Learning Standards 2025–26</h2>
-<p class="post-excerpt">How my approaches to teaching and learning lined up with the IB standards — inquiry, action, and reflection in practice.</p>
-<div class="post-actions">
-<a class="post-btn" href="posts/IBstandards.html" target="_blank" rel="noopener">Link to this Article ↗</a>
-</div>
-<div class="post-body"><iframe src="posts/IBstandards.html" title="IB Teaching & Learning Standards 2025–26" loading="lazy"></iframe></div>
-</div>
-</article>
-
-<article class="post-card" id="post-iste2425">
-<div class="post-card-interior">
-<div class="post-meta">
-<span class="post-tag">Teaching</span>
-<span class="post-date">2025 · archive</span>
-</div>
-<h2>ISTE Standards in review for 2024–2025</h2>
-<p class="post-excerpt">Last year's review — the technology used in my class and by me throughout 2024–2025.</p>
-<div class="post-actions">
-<a class="post-btn" href="posts/ISTE-standards-2024-2025.html" target="_blank" rel="noopener">Link to this Article ↗</a>
-</div>
-<div class="post-body"><iframe src="posts/ISTE-standards-2024-2025.html" title="ISTE Standards in review for 2024–2025" loading="lazy"></iframe></div>
-</div>
-</article>
-
+<!-- Post stack (newest first) — populated automatically from posts/manifest.json -->
+<section class="post-stack" id="postStack">
+<p class="posts-status" id="postsStatus">Loading posts…</p>
 </section>
 
 <!-- Side menu (right) -->
 <aside class="sidemenu" id="sidemenu">
 <button class="sidemenu-toggle" id="sidemenuToggle" aria-expanded="false">Recent posts ▾</button>
 <p class="sidemenu-heading">Recent posts</p>
-<nav class="sidemenu-list">
-<a href="#post-portfolio">2025–2026 ISNS Portfolio</a>
-<a href="#post-pd">Professional Development Reflections</a>
-<a href="#post-iste2526">ISTE Standards 2025–26</a>
-<a href="#post-goals">2025–2026 SMART Goals</a>
-<a href="#post-observations">Lesson Observations 2025–26</a>
-<a href="#post-ib">IB Teaching &amp; Learning Standards 2025–26</a>
-<a href="#post-iste2425">ISTE Standards in review for 2024–2025</a>
-</nav>
+<nav class="sidemenu-list" id="sidemenuList"></nav>
 </aside>
 
 </div>
@@ -460,10 +354,6 @@ a { color: inherit; text-decoration: none; }
     var open = sidemenu.classList.toggle('open');
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-  // Collapse the menu again after tapping a link on mobile
-  sidemenu.querySelectorAll('.sidemenu-list a').forEach(function (a) {
-    a.addEventListener('click', function () { sidemenu.classList.remove('open'); });
-  });
 
   // Embedded post bodies: hide each post's own header/footer/back-link and
   // size the iframe to its content. Posts are same-origin, so this is allowed.
@@ -480,11 +370,98 @@ a { color: inherit; text-decoration: none; }
     } catch (e) { /* cross-origin or not ready — leave default height */ }
   }
 
-  document.querySelectorAll('.post-body iframe').forEach(function (frame) {
-    frame.addEventListener('load', function () { fitFrame(frame); });
-    // Re-fit on window resize (content reflows at narrow widths)
-    window.addEventListener('resize', function () { fitFrame(frame); });
-  });
+  function slugify(filename) {
+    return 'post-' + filename.replace(/\.html$/i, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  }
+
+  function metaContent(doc, name) {
+    var el = doc.querySelector('meta[name="' + name + '"]');
+    return el ? el.content.trim() : '';
+  }
+
+  // Every post's card metadata (title/date/tag/excerpt) lives in that post's
+  // own <head> as <meta> tags — see posts/*.html. This is the only place
+  // that data needs to be written; nothing here is duplicated by hand.
+  async function loadPost(file) {
+    var res = await fetch('posts/' + file);
+    if (!res.ok) throw new Error('Failed to load posts/' + file);
+    var html = await res.text();
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    var date = metaContent(doc, 'post-date');
+    return {
+      file: file,
+      id: slugify(file),
+      title: metaContent(doc, 'post-title') || file,
+      tag: metaContent(doc, 'post-tag') || 'Post',
+      date: date,
+      dateLabel: metaContent(doc, 'post-date-label') || date,
+      excerpt: metaContent(doc, 'description')
+    };
+  }
+
+  function renderPosts(posts) {
+    var stack = document.getElementById('postStack');
+    var list = document.getElementById('sidemenuList');
+    stack.innerHTML = '';
+    list.innerHTML = '';
+
+    posts.forEach(function (post) {
+      var article = document.createElement('article');
+      article.className = 'post-card';
+      article.id = post.id;
+      article.innerHTML =
+        '<div class="post-card-interior">' +
+        '<div class="post-meta">' +
+        '<span class="post-tag"></span>' +
+        '<span class="post-date"></span>' +
+        '</div>' +
+        '<h2></h2>' +
+        '<p class="post-excerpt"></p>' +
+        '<div class="post-actions">' +
+        '<a class="post-btn" target="_blank" rel="noopener">Link to this Article ↗</a>' +
+        '</div>' +
+        '<div class="post-body"><iframe title="" loading="lazy"></iframe></div>' +
+        '</div>';
+      article.querySelector('.post-tag').textContent = post.tag;
+      article.querySelector('.post-date').textContent = post.dateLabel;
+      article.querySelector('h2').textContent = post.title;
+      article.querySelector('.post-excerpt').textContent = post.excerpt;
+      var link = article.querySelector('.post-btn');
+      link.href = 'posts/' + post.file;
+      var frame = article.querySelector('iframe');
+      frame.title = post.title;
+      frame.src = 'posts/' + post.file;
+      frame.addEventListener('load', function () { fitFrame(frame); });
+      stack.appendChild(article);
+
+      var sideLink = document.createElement('a');
+      sideLink.href = '#' + post.id;
+      sideLink.textContent = post.title;
+      sideLink.addEventListener('click', function () { sidemenu.classList.remove('open'); });
+      list.appendChild(sideLink);
+    });
+
+    window.addEventListener('resize', function () {
+      document.querySelectorAll('.post-body iframe').forEach(fitFrame);
+    });
+  }
+
+  async function init() {
+    var status = document.getElementById('postsStatus');
+    try {
+      var manifestRes = await fetch('posts/manifest.json');
+      if (!manifestRes.ok) throw new Error('Failed to load posts/manifest.json');
+      var files = await manifestRes.json();
+      var posts = await Promise.all(files.map(loadPost));
+      posts.sort(function (a, b) { return b.date.localeCompare(a.date); });
+      renderPosts(posts);
+    } catch (err) {
+      status.textContent = 'Could not load posts (' + err.message + '). If you opened this file directly, serve it over http:// instead — e.g. `python3 -m http.server` from the blog/ folder.';
+      console.error(err);
+    }
+  }
+
+  init();
 })();
 </script>
 </body>
